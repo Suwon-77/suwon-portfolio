@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원수원 - NGUYỄN NGỌC TÚ UYÊN | KOREAN VIETNAMESE INTERPRETER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rainbow: {
+                            pink: '#FFF0F3',   
+                            yellow: '#FFF9E6', 
+                            mint: '#E8FBF2',   
+                            purple: '#F3EFFF', 
+                            text: '#3A3F58',   
+                            sub: '#8A92A6'     
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Lexend', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFDF9;
+            color: #3A3F58;
+            font-family: 'Inter', sans-serif;
+        }
+        .text-rainbow-gradient {
+            background: linear-gradient(to right, #FF8FAB, #FCD34D, #4ADE80, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .candy-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .candy-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 20px 40px -15px rgba(255, 143, 171, 0.25);
+            background: #FFFFFF;
+        }
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+        }
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+        h1, h2, h3, h4, p, li {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#FFD1DC]/40 text-rainbow-text">
+
+    <div id="progress" class="fixed top-0 left-0 h-[5px] bg-gradient-to-r from-[#FFB3C6] via-[#FFE49E] via-[#B9FBC0] to-[#CDB4DB] z-50 transition-all duration-300" style="width: 0%"></div>
+
+    <header class="w-full sticky top-0 left-0 z-40 bg-white/75 backdrop-blur-lg border-b border-pink-100/40">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-display text-2xl font-bold tracking-tight text-rainbow-text flex items-center gap-2">
+                <span class="bg-gradient-to-r from-[#FF8FAB] to-[#A78BFA] text-transparent bg-clip-text">Suwon</span>
+                <span class="text-xl animate-bounce">🌈</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-rainbow-sub">
+                <a href="#about" class="hover:text-[#FF8FAB] flex items-center gap-1 transition-colors">
+                    <i data-lucide="user" class="w-4 h-4 text-[#FF8FAB]"></i>
+                    <span class="lang-vi">Giới thiệu</span><span class="lang-kr hidden">소개</span>
+                </a>
+                <a href="#education" class="hover:text-[#FCD34D] flex items-center gap-1 transition-colors">
+                    <i data-lucide="graduation-cap" class="w-4 h-4 text-[#FCD34D]"></i>
+                    <span class="lang-vi">Học văn</span><span class="lang-kr hidden">학력 사항</span>
+                </a>
+                <a href="#experience" class="hover:text-[#4ADE80] flex items-center gap-1 transition-colors">
+                    <i data-lucide="briefcase" class="w-4 h-4 text-[#4ADE80]"></i>
+                    <span class="lang-vi">Kinh nghiệm</span><span class="lang-kr hidden">주요 경력</span>
+                </a>
+                <a href="#gallery" class="hover:text-pink-400 flex items-center gap-1 transition-colors">
+                    <i data-lucide="camera" class="w-4 h-4 text-pink-400"></i>
+                    <span class="lang-vi">Bộ sưu tập</span><span class="lang-kr hidden">활동 갤러리</span>
+                </a>
+                <a href="#skills" class="hover:text-[#A78BFA] flex items-center gap-1 transition-colors">
+                    <i data-lucide="award" class="w-4 h-4 text-[#A78BFA]"></i>
+                    <span class="lang-vi">Năng lực</span><span class="lang-kr hidden">전문 역량</span>
+                </a>
+                <a href="#contact" class="hover:text-rainbow-text flex items-center gap-1 transition-colors">
+                    <i data-lucide="heart" class="w-4 h-4 text-pink-400 animate-pulse"></i>
+                    <span class="lang-vi">Liên hệ</span><span class="lang-kr hidden">문의하기</span>
+                </a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <div class="bg-purple-100/50 p-1 rounded-full flex space-x-1 text-xs font-bold border border-purple-200/30">
+                    <button id="btn-vi" onclick="switchLang('vi')" class="px-3 py-1.5 rounded-full bg-white shadow-sm text-rainbow-text transition-all">VN</button>
+                    <button id="btn-kr" onclick="switchLang('kr')" class="px-3 py-1.5 rounded-full text-rainbow-sub hover:text-rainbow-text transition-all">KR</button>
+                </div>
+                <a href="#contact" class="bg-gradient-to-r from-[#FF8FAB] via-[#FFE49E] to-[#B9FBC0] text-rainbow-text text-xs font-bold uppercase tracking-wider px-5 py-3 rounded-full hover:shadow-lg hover:shadow-pink-200/50 transition-all flex items-center gap-1">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> 
+                    <span class="lang-vi">Kết nối ngay ✨</span><span class="lang-kr hidden">비즈니스 의뢰 ✨</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 pt-12 space-y-32">
+        
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[70vh]">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-[#FF8FAB]/20 via-[#FFE49E]/30 to-[#B9FBC0]/20 rounded-full px-4 py-2 text-xs font-semibold text-purple-700 shadow-sm">
+                    <i data-lucide="quote" class="w-3.5 h-3.5 text-[#FF8FAB]"></i>
+                    <span>"Life is short and the world is wide" 🪐</span>
+                </div>
+                
+                <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold leading-normal text-rainbow-text tracking-tight">
+                    <span class="lang-vi block whitespace-nowrap">Chuẩn xác từng <span class="text-rainbow-gradient">Thuật ngữ</span> 💎</span>
+                    <span class="lang-vi block whitespace-nowrap mt-2">Thấu suốt mọi <span class="text-rainbow-gradient">Văn hóa</span> 🌸</span>
+                    
+                    <span class="lang-kr hidden block whitespace-nowrap">정교한 <span class="text-rainbow-gradient">통역</span>으로 신뢰를 ✨</span>
+                    <span class="lang-kr hidden block whitespace-nowrap mt-2">깊은 <span class="text-rainbow-gradient">문화 이해</span>로 성공을 🤝</span>
+                </h1>
+                
+                <p class="text-rainbow-sub text-base font-normal max-w-lg leading-relaxed">
+                    <span class="lang-vi">Chào bạn, mình là Nguyễn Ngọc Tú Uyên (원수원) — Thông dịch viên chuyên nghiệp song ngữ Hàn - Việt. Luôn năng động, tích cực và luôn nỗ lực hết mình để tìm ra giải pháp tối ưu cho mọi rào cản ngôn ngữ của bạn. 💖</span>
+                    <span class="lang-kr hidden">안녕하세요, 매사에 밝고 적극적이며 최선의 해결책을 찾기 위해 늘 노력하는 한-베 전문 통역사 원수원입니다. 새로운 지식과 기회를 신속하게 습득하여 도전을 통해 올바르게 성장하는 것을 즐깁니다. ✨</span>
+                </p>
+
+                <div class="pt-4 text-sm space-y-2.5 text-rainbow-sub bg-white/40 p-5 rounded-2xl border border-pink-100/30 max-w-md">
+                    <p class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-[#FF8FAB]"></i> <strong>Location:</strong> HCM City</p>
+                    <p class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-[#FCD34D]"></i> <strong>Email:</strong> nguyenngoctuuyen1212@naver.com</p>
+                    <p class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-[#4ADE80]"></i> <strong>Phone:</strong> +84-348-97-1212 / 01629773646</p>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -inset-4 bg-gradient-to-tr from-[#FF8FAB] via-[#FFE49E] to-[#A78BFA] rounded-full blur-3xl opacity-50 animate-pulse"></div>
+                <div class="relative aspect-square rounded-[36px] bg-white p-4 border-4 border-white shadow-xl overflow-hidden group">
+                    <img src="image/chan-dung.jpg">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="space-y-8 scroll-mt-24">
+            <div class="max-w-2xl">
+                <h2 class="text-xs font-bold tracking-widest text-[#FF8FAB] uppercase flex items-center gap-1.5"><i data-lucide="sparkles" class="w-4 h-4"></i> Personal Essence</h2>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-rainbow-text mt-1">
+                    <span class="lang-vi">Giá trị & Điểm mạnh bản thân 💬</span><span class="lang-kr hidden">핵심 가치 및 강점 💬</span>
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="candy-card p-8 bg-gradient-to-br from-[#FFF0F3] to-transparent">
+                    <h3 class="font-display text-lg font-bold mb-3 flex items-center gap-2 text-pink-600">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                        <span class="lang-vi">Phát triển qua thử thách</span><span class="lang-kr hidden">도전을 통한 성장</span>
+                    </h3>
+                    <p class="text-rainbow-sub text-sm leading-relaxed">
+                        <span class="lang-vi">Luôn khao khát khám phá kiến thức, cơ hội và trải nghiệm mới một cách nhanh chóng để phát triển bản thân toàn diện và trưởng thành vững vàng qua từng thử thách mới.</span>
+                        <span class="lang-kr hidden">새로운 도전을 두려워하지 않고 남들보다 빠르게 기회와 지식을 파악하여 자기계발을 이루며, 새로운 과제를 통해 한 단계 더 올바르게 성장합니다.</span>
+                    </p>
+                </div>
+                <div class="candy-card p-8 bg-gradient-to-br from-[#F3EFFF] to-transparent">
+                    <h3 class="font-display text-lg font-bold mb-3 flex items-center gap-2 text-purple-600">
+                        <i data-lucide="smile" class="w-5 h-5"></i>
+                        <span class="lang-vi">Thân thiện & Kết nối</span><span class="lang-kr hidden">친화력과 소통 능력</span>
+                    </h3>
+                    <p class="text-rainbow-sub text-sm leading-relaxed">
+                        <span class="lang-vi">Sở hữu điểm mạnh lớn về sự thân thiện, giúp dễ dàng hòa nhập, thích nghi cực tốt với môi trường mới và xây dựng mối quan hệ hợp tác đối tác bền chặt.</span>
+                        <span class="lang-kr hidden">누구와도 쉽게 어우러질 수 있는 뛰어난 친화력이 저의 가장 큰 강점입니다. 새로운 환경에 빠르게 적응하며 협력 파트너사들과 매끄러운 소통을 이끌어냅니다.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="space-y-8 scroll-mt-24">
+            <div class="max-w-2xl">
+                <h2 class="text-xs font-bold tracking-widest text-amber-500 uppercase flex items-center gap-1.5"><i data-lucide="graduation-cap" class="w-4 h-4"></i> Education background</h2>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-rainbow-text mt-1">
+                    <span class="lang-vi">Học vấn & Học vị 🎓</span><span class="lang-kr hidden">학력 사항 🎓</span>
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="candy-card p-6 border-t-4 border-[#FFE49E]">
+                    <span class="text-xs font-bold px-2.5 py-1 bg-[#FFF9E6] text-amber-600 rounded-full">2015 - 2023</span>
+                    <h3 class="font-display font-bold text-base text-rainbow-text mt-3">
+                        <span class="lang-vi">Đại học Khoa học Xã hội và Nhân văn TP.HCM</span>
+                        <span class="lang-kr hidden">호치민시 인문사회과학대학교</span>
+                    </h3>
+                    <p class="text-sm font-semibold text-purple-700 mt-1">
+                        <span class="lang-vi">Cử nhân ngành Hàn Quốc Học</span>
+                        <span class="lang-kr hidden">한국학 학사 학위</span>
+                    </p>
+                </div>
+                <div class="candy-card p-6 border-t-4 border-[#D6C7FF]">
+                    <span class="text-xs font-bold px-2.5 py-1 bg-[#F3EFFF] text-purple-600 rounded-full">2018 - 2021</span>
+                    <h3 class="font-display font-bold text-base text-rainbow-text mt-3">
+                        <span class="lang-vi">Đại học Ngoại ngữ Busan</span>
+                        <span class="lang-kr hidden">부산외국어대학교</span>
+                    </h3>
+                    <p class="text-sm font-semibold text-indigo-700 mt-1">
+                        <span class="lang-vi">Cử nhân ngành Ngôn ngữ và Văn hóa Hàn Quốc</span>
+                        <span class="lang-kr hidden">한국어문화 학사 학위</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="space-y-8 scroll-mt-24">
+            <div class="max-w-2xl">
+                <h2 class="text-xs font-bold tracking-widest text-[#4ADE80] uppercase flex items-center gap-1.5"><i data-lucide="briefcase" class="w-4 h-4"></i> Work History</h2>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-rainbow-text mt-1">
+                    <span class="lang-vi">Kinh nghiệm làm việc chính thức 👩‍💼</span><span class="lang-kr hidden">주요 경력 사항 👩‍💼</span>
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <div class="candy-card p-8 border-l-8 border-[#FF8FAB]/60">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-rainbow-text flex items-center gap-2">🏦 WEBCASH VIETNAM</h3>
+                            <p class="text-sm font-semibold text-purple-700 pl-7">
+                                <span class="lang-vi">Nhân viên bộ phận Quản lý trải nghiệm khách hàng - Thông dịch viên tiếng Hàn</span>
+                                <span class="lang-kr hidden">베트남 지사 CX팀 주임 - 한베 전문 통역사</span>
+                            </p>
+                        </div>
+                        <span class="text-xs font-bold px-3 py-1.5 bg-[#FFF0F3] rounded-full h-fit text-pink-600 border border-pink-100">2024.08 ~ Present</span>
+                    </div>
+                    
+                    <div class="text-sm text-rainbow-sub space-y-4 pl-7 lang-vi">
+                        <div>
+                            <h4 class="font-bold text-rainbow-text mb-2 flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-pink-500"></i> 1. Dự án kinh doanh mới (Lĩnh vực Fintech)</h4>
+                            <ul class="list-disc list-inside space-y-1.5 pl-4 text-xs sm:text-sm">
+                                <li>Làm cố vấn phần mềm, đóng vai trò cầu nối truyền thông giữa khách hàng và đội ngũ phát triển sản phẩm.</li>
+                                <li>Hỗ trợ quản lý kinh doanh trực tiếp cho các đối tác, khách hàng Việt Nam và Hàn Quốc.</li>
+                                <li>Tham gia kiểm thử phần mềm hệ thống và hỗ trợ thiết kế giao diện, phối hợp cùng đội ngũ quản lý sản phẩm để tối ưu hóa trải nghiệm người dùng.</li>
+                                <li>Hỗ trợ dịch thuật hệ thống đa ngôn ngữ: Anh - Hàn - Việt.</li>
+                                <li>Vận hành và hỗ trợ kỹ thuật cho các sản phẩm công nghệ tài chính cốt lõi: WeTax (Quản lý hóa đơn điện tử và thuế thu nhập cá nhân), WABOOKS TA (Phần mềm hỗ trợ đại lý thuế), WeCMS (Quản lý dòng tiền doanh nghiệp), WeBill365 (Hóa đơn tự động và đối soát thanh toán).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-rainbow-text mb-2 flex items-center gap-1.5"><i data-lucide="layers" class="w-4 h-4 text-purple-500"></i> 2. Dự án ERP</h4>
+                            <ul class="list-disc list-inside pl-4 text-xs sm:text-sm">
+                                <li>Thông dịch viên trực tiếp giữa khách hàng triển khai hệ thống hoạch định nguồn lực doanh nghiệp và đội ngũ phụ trách các phân hệ chuyên sâu như Nhân sự, Kế toán, Kho vận.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-rainbow-sub space-y-4 pl-7 lang-kr hidden">
+                        <div>
+                            <h4 class="font-bold text-rainbow-text mb-2 flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-pink-500"></i> 1. 신규 사업 프로젝트 (핀테크 분야)</h4>
+                            <ul class="list-disc list-inside space-y-1.5 pl-4 text-xs sm:text-sm">
+                                <li>소프트웨어 컨설턴트로서 고객과 개발팀 간의 통역 및 브릿지 역할 수행.</li>
+                                <li>한국 및 베트남 고객사 대상 영업 관리 지원 업무 담당.</li>
+                                <li>핀테크 제품 테스터 및 사용자 경험 디자이너로 참여하여 기획팀과 협력해 사용성 개선.</li>
+                                <li>소프트웨어 시스템 내 다국어(영어, 한국어, 베트남어) 번역 및 로컬라이징 지원.</li>
+                                <li>주요 핀테크 솔루션 운영 및 관리: WeTax (전자세금계산서 및 개인소득세 관리), WABOOKS TA (세무대리인 전용 프로그램), WeCMS (기업 자금관리 시스템), WeBill365 (대금 청구 및 자동 수납 확인 서비스).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-rainbow-text mb-2 flex items-center gap-1.5"><i data-lucide="layers" class="w-4 h-4 text-purple-500"></i> 2. 전산 전공 프로젝트 (ERP)</h4>
+                            <ul class="list-disc list-inside pl-4 text-xs sm:text-sm">
+                                <li>ERP 구축 고객사와 인사, 회계, 물류 등 전문 모듈 담당 부서 간의 전담 통역 수행.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="candy-card p-8 border-l-8 border-[#FFE49E]">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-rainbow-text flex items-center gap-2">🩺 LIVE AGAIN LTD., CO</h3>
+                            <p class="text-sm font-semibold text-amber-700 pl-7">
+                                <span class="lang-vi">Điều phối viên y tế chuyên trách</span>
+                                <span class="lang-kr hidden">의료 코디네이터</span>
+                            </p>
+                        </div>
+                        <span class="text-xs font-bold px-3 py-1.5 bg-[#FFF9E6] rounded-full h-fit text-amber-600 border border-amber-100">2022.08 - 2023.12</span>
+                    </div>
+                    
+                    <ul class="list-disc list-inside text-sm text-rainbow-sub space-y-2 pl-7 text-xs sm:text-sm lang-vi">
+                        <li>Phụ trách thông dịch và phối hợp chuyên sâu với đội ngũ chăm sóc khách hàng của Bệnh viện Trung tâm Asan Seoul và Bệnh viện Samsung Seoul.</li>
+                        <li>Tham gia dự án công nghệ thông tin y tế hợp tác giữa Bộ Y tế và Phúc lợi Hàn Quốc cùng Bệnh viện Asan, hỗ trợ tư vấn khám chữa bệnh từ xa cho bệnh nhân Việt Nam chuyển tuyến.</li>
+                        <li>Thông dịch viên đại diện gian hàng Bệnh viện Samsung Seoul tại Triển lãm Du lịch Quốc tế Thành phố Hồ Chí Minh lần thứ 17 (ITE HCMC 2023).</li>
+                        <li>Hỗ trợ thông dịch tại sự kiện tư vấn và kiểm tra sức khỏe miễn phí của Bệnh viện Phụ sản Cha tại Thành phố Hồ Chí Minh.</li>
+                    </ul>
+
+                    <ul class="list-disc list-inside text-sm text-rainbow-sub space-y-2 pl-7 text-xs sm:text-sm lang-kr hidden">
+                        <li>서울아산병원 및 삼성서울병원 컨시어지 팀과의 전담 통역 및 의료 업무 조율 업무 수행.</li>
+                        <li>보건복지부와 아산병원이 주관하는 원격의료 비즈니스 프로젝트에 참여하여 베트남 환자 대상 원격 진료 통역 지원.</li>
+                        <li>제17회 호치민 국제관광엑스포(ITE HCMC 2023) 내 삼성서울병원 부스 대표 통역사로 활동.</li>
+                        <li>호치민에서 개최된 차병원 의료 상담 행사 통역 및 운영 지원.</li>
+                    </ul>
+                </div>
+
+                <div class="candy-card p-8 border-l-8 border-[#B9FBC0]">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                            <h3 class="font-display text-xl font-bold text-rainbow-text flex items-center gap-2">🏛️ TRUNG TÂM GIÁO DỤC HÀN QUỐC TẠI TP.HCM</h3>
+                            <p class="text-sm font-semibold text-emerald-700 pl-7">
+                                <span class="lang-vi">Hỗ trợ hành chính và Quản lý kế hoạch dự án giáo dục</span>
+                                <span class="lang-kr hidden">기획 및 행정 지원 팀</span>
+                            </p>
+                        </div>
+                        <span class="text-xs font-bold px-3 py-1.5 bg-[#E8FBF2] rounded-full h-fit text-emerald-600 border border-emerald-100">2021.05 - 2022.06</span>
+                    </div>
+                    
+                    <ul class="list-disc list-inside text-sm text-rainbow-sub space-y-2 pl-7 text-xs sm:text-sm lang-vi">
+                        <li>Hỗ trợ tổ chức các khóa đào tạo giáo viên tiếng Hàn và chương trình giao lưu giáo dục phối hợp cùng Đại học Ngoại ngữ Hà Nội và Đại học Khoa học Xã hội và Nhân văn Thành phố Hồ Chí Minh.</li>
+                        <li>Tham gia quản lý dự án mở rộng mạng lưới giảng dạy tiếng Hàn chính quy tại các trường công lập ở Thành phố Hồ Chí Minh (hơn 14 trường trung học, tiếp cận hơn 3,000 học sinh mỗi năm).</li>
+                        <li>Vận hành trực tiếp các khóa đào tạo nội bộ, điều phối lớp học tiếng Hàn định kỳ với quy mô hơn 300 học viên mỗi học kỳ.</li>
+                    </ul>
+
+                    <ul class="list-disc list-inside text-sm text-rainbow-sub space-y-2 pl-7 text-xs sm:text-sm lang-kr hidden">
+                        <li>하노이 국립외국어대학교 및 호치민 인문사회과학대학교 협력 한국어 교원 양성 과정 및 교육 교류 프로그램 운영 지원.</li>
+                        <li>호치민시 관내 공립 중·고등학교(14개교 이상, 연간 3,000명 이상의 학생 대상) 한국어 정규 과목 채택 및 확장 프로젝트 관리 지원.</li>
+                        <li>학기별 300명 이상 규모의 자체 한국어 강좌 교육 프로그램 직접 운영 및 학사 관리.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="space-y-8 scroll-mt-24">
+            <div class="max-w-2xl">
+                <h2 class="text-xs font-bold tracking-widest text-[#FF8FAB] uppercase flex items-center gap-1.5"><i data-lucide="images" class="w-4 h-4"></i> Portfolio & Events</h2>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-rainbow-text mt-1">
+                    <span class="lang-vi">Hoạt động thực tế & Triển lãm quốc tế 📸</span>
+                    <span class="lang-kr hidden">통역 및 외부 활동 갤러리 📸</span>
+                </p>
+                <p class="text-xs sm:text-sm text-rainbow-sub mt-2">
+                    <span class="lang-vi">Dưới đây là lịch trình tác nghiệp thực tế đa dạng của tôi tại các sự kiện thương mại và văn hóa quy mô lớn.</span>
+                    <span class="lang-kr hidden">다양한 국제 박람회, 대규모 무역 전시회 및 문화 행사에서의 통역 현장 포트폴리오입니다.</span>
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="gallery-item bg-[#FFF0F3] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1VNMy39X2c3-h1xHQmIrgTrBJ4PHu1DVq&sz=w600-h450" alt="Vinamac Expo" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-pink-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-pink-200">2025.11.27</span>
+                                <h4 class="font-bold text-sm">VINAMAC EXPO 2025</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch kỹ thuật cơ khí xi lanh thủy lực, thiết bị đóng tàu cho hãng Hunger Hydraulics.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-pink-200">2025.11.27</span>
+                                <h4 class="font-bold text-sm">제21회 베트남 국제 기계 산업 전시회</h4>
+                                <p class="text-[11px] text-white/90">HUNGER Hydraulics Korea 부스 전담 기술 및 무역 비즈니스 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Triển lãm Cơ khí Hunger Hydraulics</span>
+                        <span class="lang-kr hidden">HUNGER Hydraulics 기술 통역</span>
+                        <a href="https://drive.google.com/file/d/1VNMy39X2c3-h1xHQmIrgTrBJ4PHu1DVq/view?usp=drive_link" target="_blank" class="text-xs text-pink-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#FFF9E6] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1oH68H6U0ZWHx8vYESsKzixB3uycQtkaN&sz=w600-h450" alt="Food Expo" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-amber-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-amber-200">2025.11.12~15</span>
+                                <h4 class="font-bold text-sm">FOOD EXPO VIETNAM 2025</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch thương mại kết nối đại lý cho hãng nông sản và hồng sâm K-International.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-amber-200">2025.11.12~15</span>
+                                <h4 class="font-bold text-sm">베트남 국제 식품 박람회 2025</h4>
+                                <p class="text-[11px] text-white/90">K-INTERNATIONAL INC 바이어 상담 및 전통 식품 유통 무역 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Triển lãm Thực phẩm K-International</span>
+                        <span class="lang-kr hidden">K-INTERNATIONAL 식품 무역 통역</span>
+                        <a href="https://drive.google.com/file/d/1oH68H6U0ZWHx8vYESsKzixB3uycQtkaN/view?usp=drive_link" target="_blank" class="text-xs text-amber-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#E8FBF2] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1b2p_ETtkP8a8sKWEH2bjJcZGVnT9J9uS&sz=w600-h450" alt="Mekong Forum" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-emerald-200">2025.09.15</span>
+                                <h4 class="font-bold text-sm">DIỄN ĐÀN DOANH NGHIỆP MÊ KÔNG</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch giới thiệu hệ thống quản trị dòng tiền doanh nghiệp và giải pháp công nghệ tài chính số.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-emerald-200">2025.09.15</span>
+                                <h4 class="font-bold text-sm">제13회 메콩-한 비즈니스 포럼</h4>
+                                <p class="text-[11px] text-white/90">웹케시 베트남 대표 비즈니스 핀테크 솔루션 소개 및 포럼 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Diễn đàn Mê Kông - Hàn Quốc</span>
+                        <span class="lang-kr hidden">메콩-한 비즈니스 포럼 통역</span>
+                        <a href="https://drive.google.com/file/d/1b2p_ETtkP8a8sKWEH2bjJcZGVnT9J9uS/view?usp=drive_link" target="_blank" class="text-xs text-emerald-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#F3EFFF] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1gTH4uzNq6McS0A-3X13XBWdgUvSmCXkE&sz=w600-h450" alt="Beauty Summit" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-purple-200">2025.08.28~29</span>
+                                <h4 class="font-bold text-sm">BEAUTY SUMMIT 2025</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch hội thảo khoa học thẩm mỹ nâng cơ và ra mắt mỹ phẩm xu hướng của tập đoàn truyền thông JTBC.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-purple-200">2025.08.28~29</span>
+                                <h4 class="font-bold text-sm">뷰티 서밋 2025</h4>
+                                <p class="text-[11px] text-white/90">JTBC 미디어 그룹 주관 K-Beauty 글로벌 콘퍼런스 비즈니스 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Hội nghị Thẩm mỹ K-Beauty JTBC</span>
+                        <span class="lang-kr hidden">JTBC K-Beauty 서밋 통역</span>
+                        <a href="https://drive.google.com/file/d/1gTH4uzNq6McS0A-3X13XBWdgUvSmCXkE/view?usp=drive_link" target="_blank" class="text-xs text-purple-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#FFF0F3] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1f-s7Crpi9J2VQjxmrGDOWLrQ_LcHZWyq&sz=w600-h450" alt="Vietbaby 2025" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-pink-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-pink-200">2025.06.05~08</span>
+                                <h4 class="font-bold text-sm">VIETBABY FAIR 2025</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch giới thiệu công nghệ tiệt trùng bình sữa và gia dụng thông minh cho thương hiệu Uvebe.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-pink-200">2025.06.05~08</span>
+                                <h4 class="font-bold text-sm">베트남 호치민 국제베이비페어</h4>
+                                <p class="text-[11px] text-white/90">UVEBE 유아용 스마트 소독기 제품 부스 현장 전담 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Triển lãm Mẹ & Bé Uvebe</span>
+                        <span class="lang-kr hidden">UVEBE 브랜드 부스 통역</span>
+                        <a href="https://drive.google.com/file/d/1f-s7Crpi9J2VQjxmrGDOWLrQ_LcHZWyq/view?usp=drive_link" target="_blank" class="text-xs text-pink-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#FFF9E6] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1BYxjhpt0N3ZnM6hv8NtOXwb8-wsgbKdG&sz=w600-h450" alt="Interpetfest" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-amber-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-amber-200">2025.02.20~22</span>
+                                <h4 class="font-bold text-sm">INTERPETFEST 2025</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch thương mại dòng sản phẩm dầu gội hữu cơ và xịt dưỡng spa cao cấp cho thú cưng hiệu Ainsoap.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-amber-200">2025.02.20~22</span>
+                                <h4 class="font-bold text-sm">호치민 국제 반려동물 박람회</h4>
+                                <p class="text-[11px] text-white/90">AINSOAP 프리미엄 천연 펫 용품 브랜드 부스 바이어 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Lễ hội Thú cưng Quốc tế Ainsoap</span>
+                        <span class="lang-kr hidden">AINSOAP 반려동물 박람회 통역</span>
+                        <a href="https://drive.google.com/file/d/1BYxjhpt0N3ZnM6hv8NtOXwb8-wsgbKdG/view?usp=drive_link" target="_blank" class="text-xs text-amber-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#E8FBF2] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=10qPyjJI9w-JjP0cYBobr_1nsSuodzQDF&sz=w600-h450" alt="Vietbaby 2024" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-emerald-200">2024.05.30~06.02</span>
+                                <h4 class="font-bold text-sm">VIETBABY FAIR 2024</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch kết nối chuỗi siêu thị mẹ và bé cho dòng máy tiệt trùng cầm tay tiên tiến của hãng Uvtec.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-emerald-200">2024.05.30~06.02</span>
+                                <h4 class="font-bold text-sm">국제 베이비&키즈페어 2024</h4>
+                                <p class="text-[11px] text-white/90">UVTEC 휴대용 자외선 소독기 제조사 전담 무역 바이어 매칭 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Triển lãm Quốc tế Máy tiệt trùng Uvtec</span>
+                        <span class="lang-kr hidden">UVTEC 소독기 제조사 무역 통역</span>
+                        <a href="https://drive.google.com/file/d/10qPyjJI9w-JjP0cYBobr_1nsSuodzQDF/view?usp=drive_link" target="_blank" class="text-xs text-emerald-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#F3EFFF] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=19HKXfESpLgnTk7xaHmnrJMmnVBgIJSJf&sz=w600-h450" alt="Foodexpo 2023" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-purple-200">2023.11.22~25</span>
+                                <h4 class="font-bold text-sm">FOOD EXPO KOREA</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch xúc tiến ký kết phân phối sản phẩm Rong biển gia vị truyền thống cao cấp tại khu gian hàng Hàn Quốc.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-purple-200">2023.11.22~25</span>
+                                <h4 class="font-bold text-sm">베트남 국제 식품 박람회 한국관</h4>
+                                <p class="text-[11px] text-white/90">광천 우리맛김 브랜드 부스 전담 유통 판로 개척 무역 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Gian hàng Rong biển Gwangcheon</span>
+                        <span class="lang-kr hidden">광천 우리맛김 한국관 통역</span>
+                        <a href="https://drive.google.com/file/d/19HKXfESpLgnTk7xaHmnrJMmnVBgIJSJf/view?usp=drive_link" target="_blank" class="text-xs text-purple-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#FFF0F3] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=11JUy2ZdDfs2EDoy_qFGv5sHVoW8gJgWF&sz=w600-h450" alt="BamBam Concert" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-pink-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-pink-200">2023.10.20~21</span>
+                                <h4 class="font-bold text-sm">BAMBAM SOLO CONCERT</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch viên hiện trường điều phối kỹ thuật sân khấu giữa ban tổ chức Việt Nam và đội ngũ đạo diễn hình ảnh Hàn Quốc.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-pink-200">2023.10.20~21</span>
+                                <h4 class="font-bold text-sm">뱀뱀 솔로 콘서트 호치민</h4>
+                                <p class="text-[11px] text-white/90">iME VIETNAM 주관 콘서트 내 한국인 영상 감독(VJ) 팀 전담 현장 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Sự kiện Đại nhạc hội BamBam (GOT7)</span>
+                        <span class="lang-kr hidden">GOT7 뱀뱀 솔로 콘서트 현장 통역</span>
+                        <a href="https://drive.google.com/file/d/11JUy2ZdDfs2EDoy_qFGv5sHVoW8gJgWF/view?usp=drive_link" target="_blank" class="text-xs text-pink-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#FFF9E6] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1ptVBUJkL_3aPsUoRLEnH3P3a32ssUhXa&sz=w600-h450" alt="Vision Trip" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-amber-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-amber-200">2019.01.10~17</span>
+                                <h4 class="font-bold text-sm">VOLUNTEER VISION TRIP</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch viên tình nguyện hỗ trợ đoàn phúc lợi xã hội xây dựng nhà tình thương tại tỉnh Vĩnh Long.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-amber-200">2019.01.10~17</span>
+                                <h4 class="font-bold text-sm">분당구미교회 비전트립</h4>
+                                <p class="text-[11px] text-white/90">베트남 빈롱성 지역 사랑의 집짓기 국제 봉사단 전담 통역 활동.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Hoạt động Tình nguyện Xây nhà Nhân ái</span>
+                        <span class="lang-kr hidden">사랑의 집짓기 국제 봉사 통역</span>
+                        <a href="https://drive.google.com/file/d/1ptVBUJkL_3aPsUoRLEnH3P3a32ssUhXa/view?usp=drive_link" target="_blank" class="text-xs text-amber-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#E8FBF2] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1x7wJh4Fd1WiKR20TLsEyGap2bEvxKFMj&sz=w600-h450" alt="Pyeongchang" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-emerald-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-emerald-200">2018.01.06~13</span>
+                                <h4 class="font-bold text-sm">ART DREAM CAMP</h4>
+                                <p class="text-[11px] text-white/90">Điều phối viên hỗ trợ giao lưu văn hóa thanh thiếu niên thuộc dự án Thế vận hội Mùa đông Pyeongchang.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-emerald-200">2018.01.06~13</span>
+                                <h4 class="font-bold text-sm">평창 문화올림픽 아트드림캠프</h4>
+                                <p class="text-[11px] text-white/90">문화체육관광부 주관 청소년 문화 교류 프로젝트 및 올림픽 홍보 서포터즈.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Giao lưu Văn hóa Olympic Pyeongchang</span>
+                        <span class="lang-kr hidden">평창 아트드림캠프 문화 교류</span>
+                        <a href="https://drive.google.com/file/d/1x7wJh4Fd1WiKR20TLsEyGap2bEvxKFMj/view?usp=drive_link" target="_blank" class="text-xs text-emerald-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+                <div class="gallery-item bg-[#F3EFFF] p-3 border border-white">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                        <img src="https://drive.google.com/thumbnail?id=1ns0FLzwoSYs7UJvWL13u1ptiXvuoW8mQ&sz=w600-h450" alt="MTA 2018" class="w-full h-full object-cover transition-transform duration-500">
+                        <div class="gallery-overlay absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent opacity-0 flex flex-col justify-end p-4 transition-all duration-300">
+                            <div class="lang-vi text-white">
+                                <span class="text-xs text-purple-200">2018.07~08</span>
+                                <h4 class="font-bold text-sm">MTA VIETNAM 2018</h4>
+                                <p class="text-[11px] text-white/90">Thông dịch kỹ thuật thương mại cho gian hàng máy gia công chính xác kỹ thuật cao của tập đoàn Sehwa Techwin.</p>
+                            </div>
+                            <div class="lang-kr hidden text-white">
+                                <span class="text-xs text-purple-200">2018.07~08</span>
+                                <h4 class="font-bold text-sm">베트남 국제 공작기계 및 금속가공 전시회</h4>
+                                <p class="text-[11px] text-white/90">SEHWA TECHWIN VINA 부스 금속 가공 기계 전문 무역 통역.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="font-display font-bold text-sm text-rainbow-text mt-2 flex justify-between items-center">
+                        <span class="lang-vi">Triển lãm Công nghiệp Cơ khí Sehwa</span>
+                        <span class="lang-kr hidden">MTA 세화테크윈 공작기계 통역</span>
+                        <a href="https://drive.google.com/file/d/1ns0FLzwoSYs7UJvWL13u1ptiXvuoW8mQ/view?usp=drive_link" target="_blank" class="text-xs text-purple-500 hover:underline flex items-center gap-0.5"><i data-lucide="external-link" class="w-3 h-3"></i></a>
+                    </h4>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="grid grid-cols-1 md:grid-cols-12 gap-8 scroll-mt-24">
+            <div class="md:col-span-7 space-y-6">
+                <h3 class="font-display text-2xl font-bold text-rainbow-text flex items-center gap-2">
+                    <i data-lucide="check-square" class="w-6 text-[#A78BFA]"></i>
+                    <span class="lang-vi">Phân loại theo Lĩnh vực Chuyên môn</span>
+                    <span class="lang-kr hidden">전문 분야별 역량 요약</span>
+                </h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm lang-vi">
+                    <div class="p-5 bg-white border border-pink-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-pink-500 mb-1 flex items-center gap-1"><i data-lucide="wallet" class="w-4 h-4"></i> CÔNG NGHỆ TÀI CHÍNH</p>
+                        <p class="text-xs text-rainbow-sub">Kiểm thử hệ thống phần mềm chuyên sâu, thông dịch giải pháp tài chính số doanh nghiệp, thiết kế cấu trúc giao diện cơ bản trên Figma.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-purple-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-indigo-500 mb-1 flex items-center gap-1"><i data-lucide="stethoscope" class="w-4 h-4"></i> LĨNH VỰC Y TẾ</p>
+                        <p class="text-xs text-rainbow-sub">Tư vấn y khoa Hàn Quốc, điều phối chăm sóc cao cấp tại bệnh viện lớn, biên tập thiết kế đồ họa truyền thông trên Canva và chỉnh sửa video.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-amber-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-amber-600 mb-1 flex items-center gap-1"><i data-lucide="book-open" class="w-4 h-4"></i> LĨNH VỰC GIÁO DỤC</p>
+                        <p class="text-xs text-rainbow-sub">Xây dựng kế hoạch và quản lý dự án mở rộng mạng lưới đào tạo ngoại ngữ trường học, điều phối lớp hành chính quy mô lớn.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-emerald-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-emerald-600 mb-1 flex items-center gap-1"><i data-lucide="factory" class="w-4 h-4"></i> SẢN XUẤT & CHẾ TẠO</p>
+                        <p class="text-xs text-rainbow-sub">Thông dịch kỹ thuật trực tiếp tại nhà xưởng, kỹ năng cơ bản về kiểm định quy trình và chất lượng sản phẩm.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm lang-kr hidden">
+                    <div class="p-5 bg-white border border-pink-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-pink-500 mb-1 flex items-center gap-1"><i data-lucide="wallet" class="w-4 h-4"></i> 핀테크 분야</p>
+                        <p class="text-xs text-rainbow-sub">소프트웨어 시스템 테스트(UAT/PROD), 디지털 금융 솔루션 통역, Figma 활용 기초 UI 구조 설계 능력 보유.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-purple-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-indigo-500 mb-1 flex items-center gap-1"><i data-lucide="stethoscope" class="w-4 h-4"></i> 의료 분야</p>
+                        <p class="text-xs text-rainbow-sub">한국 종합병원 의료 상담 및 상급 컨시어지 조율, Canva 및 비디오 편집 프로그램을 활용한 마케팅 콘텐츠 제작 역량.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-amber-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-amber-600 mb-1 flex items-center gap-1"><i data-lucide="book-open" class="w-4 h-4"></i> 교육 분야</p>
+                        <p class="text-xs text-rainbow-sub">공립 교육기관 네트워크 확장 프로젝트 관리, 대규모 정규 강좌 수강생 관리 및 학사 행정 지원 업무.</p>
+                    </div>
+                    <div class="p-5 bg-white border border-emerald-100/60 rounded-2xl shadow-sm">
+                        <p class="font-bold text-emerald-600 mb-1 flex items-center gap-1"><i data-lucide="factory" class="w-4 h-4"></i> 제조 및 생산 분야</p>
+                        <p class="text-xs text-rainbow-sub">공장 현장 기술 통역 실무 경험, 품질 보증 및 제조 공정 프로세스에 대한 기초 이해도 보유.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-5 space-y-6">
+                <h3 class="font-display text-2xl font-bold text-rainbow-text flex items-center gap-2">
+                    <i data-lucide="file-badge" class="w-6 text-amber-400"></i>
+                    <span class="lang-vi">Chứng chỉ ngoại ngữ & Chuyên môn</span>
+                    <span class="lang-kr hidden">자격증 및 어학 자격 소지</span>
+                </h3>
+                <div class="space-y-4 text-sm">
+                    <div class="p-4 bg-white border border-purple-100 rounded-2xl shadow-sm flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-rainbow-text">TOPIK 5</p>
+                            <p class="text-xs text-rainbow-sub">
+                                <span class="lang-vi">Chứng chỉ Năng lực Tiếng Hàn - Cấp độ 5</span>
+                                <span class="lang-kr hidden">한국어능력시험 5급 취득</span>
+                            </p>
+                        </div>
+                        <i data-lucide="award" class="w-5 h-5 text-purple-500"></i>
+                    </div>
+                    <div class="p-4 bg-white border border-purple-100 rounded-2xl shadow-sm flex justify-between items-center">
+                        <div>
+                            <p class="font-bold text-rainbow-text">TOEIC 500</p>
+                            <p class="text-xs text-rainbow-sub">
+                                <span class="lang-vi">Chứng chỉ Tiếng Anh thương mại</span>
+                                <span class="lang-kr hidden">공인 토익 성적 500점 취득</span>
+                            </p>
+                        </div>
+                        <i data-lucide="award" class="w-5 h-5 text-blue-400"></i>
+                    </div>
+                    <div class="p-4 bg-white border border-purple-100 rounded-2xl shadow-sm">
+                        <p class="font-bold text-rainbow-text text-xs text-pink-500 uppercase">
+                            <span class="lang-vi">Học viện Chứng nhận Đời sống Hàn Quốc</span>
+                            <span class="lang-kr hidden">한국 라이프 인증원</span>
+                        </p>
+                        <p class="font-bold text-rainbow-text mt-1">
+                            <span class="lang-vi">Chứng chỉ Điều phối viên Bệnh viện chuyên nghiệp</span>
+                            <span class="lang-kr hidden">병원 코디네이터 전문 자격증 소지</span>
+                        </p>
+                        <div class="flex gap-2 mt-2">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-pink-100 text-pink-600 rounded">1급 자격 취득 (2023/08/17)</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-pink-100 text-pink-600 rounded">2급 자격 취득 (2023/08/17)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="bg-gradient-to-tr from-[#FFF0F3] via-[#FFF9E6] to-[#F3EFFF] rounded-[32px] p-8 md:p-12 border-2 border-white shadow-sm scroll-mt-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5 space-y-4">
+                    <h2 class="font-display text-3xl font-bold tracking-tight flex items-center gap-2">Let's Create Together! 🌈</h2>
+                    <p class="text-rainbow-text/80 text-sm leading-relaxed font-medium">
+                        <span class="lang-vi">Bạn đã sẵn sàng cùng tôi hợp tác phát triển thành công những dự án sắp tới chưa? Đừng ngần ngại để lại thông tin nhé. ✨</span>
+                        <span class="lang-kr hidden">새로운 비즈니스 가치 창출과 성공적인 프로젝트 수행을 위해 함께 도약할 준비가 되셨나요? 편하게 메시지를 남겨주세요. ✨</span>
+                    </p>
+                </div>
+
+                <div class="lg:col-span-7 bg-white/95 p-6 sm:p-8 rounded-2xl space-y-4 shadow-md border border-pink-100/50">
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('정상적으로 전송되었습니다. / Tin nhắn gửi thành công.');">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-rainbow-text/70 mb-1.5 flex items-center gap-1">
+                                    <i data-lucide="user" class="w-3 h-3 text-[#FF8FAB]"></i> 
+                                    <span class="lang-vi">Tên / Doanh nghiệp</span><span class="lang-kr hidden">성함 / 기업명</span>
+                                </label>
+                                <input type="text" required class="w-full h-11 px-4 border border-purple-100 rounded-xl focus:outline-none focus:border-pink-300 bg-white text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-rainbow-text/70 mb-1.5 flex items-center gap-1">
+                                    <i data-lucide="mail" class="w-3 h-3 text-[#FCD34D]"></i> 
+                                    <span class="lang-vi">Thông tin liên lạc (Email/SĐT)</span><span class="lang-kr hidden">연락처 (이메일/연락처)</span>
+                                </label>
+                                <input type="text" required class="w-full h-11 px-4 border border-purple-100 rounded-xl focus:outline-none focus:border-pink-300 bg-white text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-rainbow-text/70 mb-1.5 flex items-center gap-1">
+                                <i data-lucide="message-square" class="w-3 h-3 text-[#4ADE80]"></i> 
+                                <span class="lang-vi">Nội dung trao đổi dự án 💌</span><span class="lang-kr hidden">의뢰 및 제안 내용 💌</span>
+                            </label>
+                            <textarea required rows="3" class="w-full p-4 border border-purple-100 rounded-xl focus:outline-none focus:border-pink-300 bg-white text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full h-12 bg-rainbow-text text-white text-xs uppercase font-bold tracking-widest rounded-xl hover:bg-opacity-90 transition-all shadow-md flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span class="lang-vi">Gửi thông tin dự án ✨</span><span class="lang-kr hidden">프로젝트 의뢰 전송 ✨</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white/70 border-t border-pink-50 mt-32">
+        <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between text-xs text-rainbow-sub font-medium">
+            <div class="font-display font-bold text-rainbow-text text-lg mb-4 sm:mb-0 flex items-center gap-1">Suwon<span class="text-pink-400">_</span>🎈</div>
+            <p>&copy; 2026 Suwon. Precise Interpretation, Infinite Growth.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        function switchLang(lang) {
+            const viElements = document.querySelectorAll('.lang-vi');
+            const krElements = document.querySelectorAll('.lang-kr');
+            
+            if (lang === 'vi') {
+                viElements.forEach(el => el.classList.remove('hidden'));
+                krElements.forEach(el => el.classList.add('hidden'));
+                document.getElementById('btn-vi').className = "px-3 py-1.5 rounded-full bg-white shadow-sm text-rainbow-text transition-all";
+                document.getElementById('btn-kr').className = "px-3 py-1.5 rounded-full text-rainbow-sub hover:text-rainbow-text transition-all";
+            } else {
+                viElements.forEach(el => el.classList.add('hidden'));
+                krElements.forEach(el => el.classList.remove('hidden'));
+                document.getElementById('btn-kr').className = "px-3 py-1.5 rounded-full bg-white shadow-sm text-rainbow-text transition-all";
+                document.getElementById('btn-vi').className = "px-3 py-1.5 rounded-full text-rainbow-sub hover:text-rainbow-text transition-all";
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progress').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
